@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-RSpec.describe 'workstation::default' do
+RSpec.describe 'workstation::bash' do
   context 'When all attributes are default' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
@@ -15,8 +15,12 @@ RSpec.describe 'workstation::default' do
       expect { chef_run }.to_not raise_error
     end
 
-    it 'includes workstation::bash' do
-      expect(chef_run).to include_recipe('workstation::bash')
+    it 'creates .bash_profile' do
+      expect(chef_run).to create_cookbook_file('/Users/craig/.bash_profile').with(
+        owner: 'craig',
+        group: 'staff',
+        mode: '0644'
+      )
     end
   end
 end

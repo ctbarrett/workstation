@@ -5,12 +5,6 @@ obsolete, the overall workflow will be sufficiently mature that it is relatively
 
 ## Files/Directories
 
-### .bash_profile
-
-```bash
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-```
-
 ### .bashrc
 
 ```bash

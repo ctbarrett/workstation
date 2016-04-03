@@ -9,6 +9,7 @@ provisioner:
 # default verifier)
 verifier:
   name: inspec
+  format: documentation
 
 platforms:
   - name: osx-10.11
