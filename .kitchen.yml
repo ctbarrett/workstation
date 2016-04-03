@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+verifier:
+  name: inspec
+
+platforms:
+  - name: osx-10.11
+    driver_config:
+      box: osx-10.11
+      box_url: file:///Users/craig/src/osx-vm-templates/packer/osx-10.11.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[workstation::default]
+    attributes:
