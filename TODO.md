@@ -239,6 +239,7 @@ $ sudo grep admin /etc/sudoers
     -   atom
     -   caffeine
     -   flash
+    -   flux
     -   google-chrome
     -   google-drive
     -   iterm2
