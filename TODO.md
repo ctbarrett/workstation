@@ -232,6 +232,7 @@ $ sudo grep admin /etc/sudoers
     -   awscli
     -   bash-git-prompt
     -   packer
+    -   python3
 
 
 -   homebrew-cask
