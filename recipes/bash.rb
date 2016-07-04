@@ -11,7 +11,7 @@ curr_group = Etc.getgrgid(curr_user['gid'])
 home = curr_user['dir']
 
 cookbook_file "#{home}/.bash_profile" do
-  source '.bash_profile'
+  source 'bash/.bash_profile'
   owner curr_user['name']
   group curr_group['name']
   mode '0644'

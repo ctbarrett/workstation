@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: workstation
-# Spec:: default
+# Spec:: bash
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
