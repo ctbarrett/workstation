@@ -5,34 +5,6 @@ obsolete, the overall workflow will be sufficiently mature that it is relatively
 
 ## Files/Directories
 
-### .bashrc
-
-```bash
-# Shell basics
-export HISTFILE=~/.bash_history
-export PATH=~/bin:$PATH
-set -o vi
-shopt -s histappend
-
-# Aliases
-alias ls='ls -GFh '
-alias ll='ls -l '
-
-# Include per-app shell configs
-if [[ -d ~/.profile.d ]]
-then
-  for i in ~/.profile.d/*.sh; do [[ -r ${i} ]] && . ${i}; done
-  unset i
-else
-  mkdir ~/.profile.d
-fi
-
-# Terminal colors
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-export GREP_OPTIONS='--color=auto'
-```
-
 ### ~/.profile.d
 
 #### bash_completion.sh
@@ -238,11 +210,13 @@ $ sudo grep admin /etc/sudoers
 -   homebrew-cask
 
     -   atom
+    -   box-sync
     -   caffeine
     -   flash
     -   flux
     -   google-chrome
     -   google-drive
+    -   istat-menus
     -   iterm2
     -   keepassx
     -   nosleep
@@ -268,16 +242,18 @@ $ sudo grep admin /etc/sudoers
 
 -   atom
 
-    -   vim-mode
     -   ex-mode
-    -   markdown-scroll-sync
     -   linter
-    -   linter-rubocop
     -   linter-foodcritic
     -   linter-markdown
+    -   linter-rubocop
+    -   markdown-scroll-sync
+    -   minimap
+    -   minimap-linter
+    -   monokai-seti
     -   seti-ui
     -   seti-syntax
-    -   monokai-seti
+    -   vim-mode
 
 ## Vagrant box
 

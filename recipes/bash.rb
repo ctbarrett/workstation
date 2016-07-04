@@ -16,3 +16,10 @@ cookbook_file "#{home}/.bash_profile" do
   group curr_group['name']
   mode '0644'
 end
+
+cookbook_file "#{home}/.bashrc" do
+  source 'bash/.bashrc'
+  owner curr_user['name']
+  group curr_group['name']
+  mode '0644'
+end
