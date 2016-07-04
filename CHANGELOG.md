@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.1.4
+
+-   Added ~/.profile.d
+
 ## 0.1.3
 
 -   Added more bash configs and updated unit/integration tests
