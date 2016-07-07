@@ -12,23 +12,27 @@ user = curr_user['name']
 group = curr_group['name']
 home = curr_user['dir']
 
-cookbook_file "#{home}/.bash_profile" do
-  source 'bash/.bash_profile'
-  owner user
-  group group
-  mode '0644'
-end
-
-cookbook_file "#{home}/.bashrc" do
-  source 'bash/.bashrc'
-  owner user
-  group group
-  mode '0644'
-end
-
 directory "#{home}/.profile.d" do
   owner user
   group group
-  mode '0755'
+  mode '0700'
   action :create
+end
+
+node['workstation']['shell']['bash']['dot_files'].each do |file|
+  cookbook_file "#{home}/#{file}" do
+    source "bash/#{file}"
+    owner user
+    group group
+    mode '0600'
+  end
+end
+
+node['workstation']['shell']['bash']['profile_d_files'].each do |file|
+  cookbook_file "#{home}/.profile.d/#{file}" do
+    source "bash/.profile.d/#{file}"
+    owner user
+    group group
+    mode '0700'
+  end
 end

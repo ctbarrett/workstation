@@ -221,6 +221,7 @@ $ sudo grep admin /etc/sudoers
     -   keepassx
     -   nosleep
     -   skype
+    -   slack
     -   spectacle
     -   vagrant
     -   virtualbox

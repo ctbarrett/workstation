@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.1.5
+
+-   Added ~/.profile.d files and updated tests
+
 ## 0.1.4
 
 -   Added ~/.profile.d
