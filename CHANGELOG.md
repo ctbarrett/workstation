@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.2.0
+
+-   Added home.rb to manage sub directories under user home
+
 ## 0.1.6
 
 -   Added bash-git-prompt config

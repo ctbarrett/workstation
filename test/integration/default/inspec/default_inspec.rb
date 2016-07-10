@@ -1,13 +1,18 @@
+user = 'vagrant'
+home = "/Users/#{user}"
+profile_d = "#{home}/.profile.d"
 
-describe directory('/Users/vagrant/.profile.d') do
-  it { should exist }
-  it { should be_directory }
-  it { should be_owned_by('vagrant') }
-  it { should be_grouped_into('staff') }
-  its('mode') { should eq 0o0700 }
+%w(.profile.d src).each do |directory|
+  describe directory("#{home}/#{directory}") do
+    it { should exist }
+    it { should be_directory }
+    it { should be_owned_by('vagrant') }
+    it { should be_grouped_into('staff') }
+    its('mode') { should eq 0o0700 }
+  end
 end
 
-describe file('/Users/vagrant/.bash_profile') do
+describe file("#{home}/.bash_profile") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
@@ -16,7 +21,7 @@ describe file('/Users/vagrant/.bash_profile') do
   its('content') { should match %r{\[\[ -f ~/.bashrc \]\] && . ~/.bashrc\n} }
 end
 
-describe file('/Users/vagrant/.bashrc') do
+describe file("#{home}/.bashrc") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
@@ -28,7 +33,7 @@ describe file('/Users/vagrant/.bashrc') do
   its('content') { should match(/^# Terminal colors/) }
 end
 
-describe file('/Users/vagrant/.profile.d/bash_colors.sh') do
+describe file("#{profile_d}/bash_colors.sh") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
@@ -44,7 +49,7 @@ describe file('/Users/vagrant/.profile.d/bash_colors.sh') do
   its('content') { should match(/^# High Intensity backgrounds/) }
 end
 
-describe file('/Users/vagrant/.profile.d/bash_completion.sh') do
+describe file("#{profile_d}/bash_completion.sh") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
@@ -54,7 +59,7 @@ describe file('/Users/vagrant/.profile.d/bash_completion.sh') do
   its('content') { should match(/^complete -C aws_completer aws/) }
 end
 
-describe file('/Users/vagrant/.profile.d/bash-git-prompt.sh') do
+describe file("#{profile_d}/bash-git-prompt.sh") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
@@ -67,7 +72,7 @@ describe file('/Users/vagrant/.profile.d/bash-git-prompt.sh') do
   end
 end
 
-describe file('/Users/vagrant/.profile.d/chefdk.sh') do
+describe file("#{profile_d}/chefdk.sh") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
