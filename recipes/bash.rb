@@ -8,11 +8,31 @@
 require 'etc'
 curr_user = Etc.getpwnam(Etc.getlogin)
 curr_group = Etc.getgrgid(curr_user['gid'])
+user = curr_user['name']
+group = curr_group['name']
 home = curr_user['dir']
 
-cookbook_file "#{home}/.bash_profile" do
-  source '.bash_profile'
-  owner curr_user['name']
-  group curr_group['name']
-  mode '0644'
+directory "#{home}/.profile.d" do
+  owner user
+  group group
+  mode '0700'
+  action :create
+end
+
+node['workstation']['shell']['bash']['dot_files'].each do |file|
+  cookbook_file "#{home}/#{file}" do
+    source "bash/#{file}"
+    owner user
+    group group
+    mode '0600'
+  end
+end
+
+node['workstation']['shell']['bash']['profile_d_files'].each do |file|
+  cookbook_file "#{home}/.profile.d/#{file}" do
+    source "bash/.profile.d/#{file}"
+    owner user
+    group group
+    mode '0700'
+  end
 end
