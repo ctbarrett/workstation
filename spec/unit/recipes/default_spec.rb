@@ -15,8 +15,10 @@ RSpec.describe 'workstation::default' do
       expect { chef_run }.to_not raise_error
     end
 
-    it 'includes workstation::bash' do
-      expect(chef_run).to include_recipe('workstation::bash')
+    %w(bash home).each do |recipe|
+      it "includes workstation::#{recipe}" do
+        expect(chef_run).to include_recipe("workstation::#{recipe}")
+      end
     end
   end
 end
