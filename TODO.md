@@ -109,6 +109,8 @@ $ sudo grep admin /etc/sudoers
 
     -   awscli
     -   bash-git-prompt
+    -   coreutils
+    -   homebrew/dupes/grep
     -   packer
     -   python3
 
@@ -125,6 +127,7 @@ $ sudo grep admin /etc/sudoers
     -   istat-menus
     -   iterm2
     -   keepassx
+    -   microsoft-office
     -   nosleep
     -   skype
     -   slack

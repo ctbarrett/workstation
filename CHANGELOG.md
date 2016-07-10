@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.1.6
+
+-   Added bash-git-prompt config
+
 ## 0.1.5
 
 -   Added ~/.profile.d files and updated tests
