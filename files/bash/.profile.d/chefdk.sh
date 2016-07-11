@@ -1,1 +1,1 @@
-eval "$(chef shell-init bash)"
+eval "$(/opt/chefdk/bin/chef shell-init bash)"

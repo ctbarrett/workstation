@@ -47,46 +47,9 @@ $ sudo grep admin /etc/sudoers
 
 ## Software
 
--   chef/chefdk
-
--   homebrew
-
-    -   awscli
-    -   bash-git-prompt
-    -   coreutils
-    -   homebrew/dupes/grep
-    -   packer
-    -   python3
-
-
--   homebrew-cask
-
-    -   atom
-    -   box-sync
-    -   caffeine
-    -   flash
-    -   flux
-    -   google-chrome
-    -   google-drive
-    -   istat-menus
-    -   iterm2
-    -   keepassx
-    -   microsoft-office
-    -   nosleep
-    -   skype
-    -   slack
-    -   spectacle
-    -   vagrant
-    -   virtualbox
-    -   virtualbox-extension-pack
-
-
 -   app store / buy
 
-    -   iStat Menus
-    -   Daisy Disk
     -   Magnet
-
 
 -   gems
 

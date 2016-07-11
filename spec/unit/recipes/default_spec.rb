@@ -7,15 +7,19 @@
 RSpec.describe 'workstation::default' do
   context 'When all attributes are default' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::SoloRunner.new
       runner.converge(described_recipe)
+    end
+
+    before do
+      stub_command('which git').and_return('/opt/chefdk/embedded/bin/git')
     end
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
 
-    %w(bash home).each do |recipe|
+    %w(bash home packages).each do |recipe|
       it "includes workstation::#{recipe}" do
         expect(chef_run).to include_recipe("workstation::#{recipe}")
       end

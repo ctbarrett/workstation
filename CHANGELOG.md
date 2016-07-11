@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.3.0
+
+-   Add homebrew taps, packages, and casks
+
 ## 0.2.0
 
 -   Added home.rb to manage sub directories under user home

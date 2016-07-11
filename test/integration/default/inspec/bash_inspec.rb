@@ -2,14 +2,12 @@ user = 'vagrant'
 home = "/Users/#{user}"
 profile_d = "#{home}/.profile.d"
 
-%w(.profile.d src).each do |directory|
-  describe directory("#{home}/#{directory}") do
-    it { should exist }
-    it { should be_directory }
-    it { should be_owned_by('vagrant') }
-    it { should be_grouped_into('staff') }
-    its('mode') { should eq 0o0700 }
-  end
+describe directory(profile_d.to_s) do
+  it { should exist }
+  it { should be_directory }
+  it { should be_owned_by('vagrant') }
+  it { should be_grouped_into('staff') }
+  its('mode') { should eq 0o0700 }
 end
 
 describe file("#{home}/.bash_profile") do
@@ -59,13 +57,21 @@ describe file("#{profile_d}/bash_completion.sh") do
   its('content') { should match(/^complete -C aws_completer aws/) }
 end
 
-describe file("#{profile_d}/bash-git-prompt.sh") do
+describe file("#{profile_d}/bash_prompt.sh") do
   it { should exist }
   it { should be_file }
   it { should be_owned_by('vagrant') }
   it { should be_grouped_into('staff') }
   its('mode') { should eq 0o0700 }
   its('content') { should match(%r{^## Default/basic/color prompt}) }
+end
+
+describe file("#{profile_d}/bash-git-prompt.sh") do
+  it { should exist }
+  it { should be_file }
+  it { should be_owned_by('vagrant') }
+  it { should be_grouped_into('staff') }
+  its('mode') { should eq 0o0700 }
   its('content') { should match(/^## Use Git prompt if available/) }
   its('content') do
     should match(%r{^\s+source "\$\(brew --prefix bash-git-prompt\)/share/gitprompt.sh"})
