@@ -8,6 +8,7 @@ default['workstation']['shell']['bash']['dot_files'] = [
 default['workstation']['shell']['bash']['profile_d_files'] = [
   'bash_colors.sh',
   'bash_completion.sh',
+  'bash_prompt.sh',
   'bash-git-prompt.sh',
   'chefdk.sh'
 ]

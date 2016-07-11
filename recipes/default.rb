@@ -6,3 +6,4 @@
 
 include_recipe "#{cookbook_name}::home"
 include_recipe "#{cookbook_name}::bash"
+include_recipe "#{cookbook_name}::packages"

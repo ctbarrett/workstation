@@ -7,8 +7,12 @@
 RSpec.describe 'workstation::bash' do
   context 'When all attributes are default' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::SoloRunner.new
       runner.converge(described_recipe)
+    end
+
+    before do
+      stub_command('which git').and_return('/opt/chefdk/embedded/bin/git')
     end
 
     user_home = '/Users/craig'
@@ -24,9 +28,9 @@ RSpec.describe 'workstation::bash' do
       )
     end
 
-    %w(.bash_profile .bashrc).each do |bash_file|
-      it "creates ~/#{bash_file}" do
-        expect(chef_run).to create_cookbook_file("#{user_home}/#{bash_file}").with(
+    %w(.bash_profile .bashrc).each do |dot_file|
+      it "creates ~/#{dot_file}" do
+        expect(chef_run).to create_cookbook_file("#{user_home}/#{dot_file}").with(
           owner: 'craig',
           group: 'staff',
           mode: '0600'
@@ -34,9 +38,9 @@ RSpec.describe 'workstation::bash' do
       end
     end
 
-    %w(bash_colors.sh bash_completion.sh bash-git-prompt.sh chefdk.sh).each do |profile_d_file|
-      it "creates ~/.profile.d/#{profile_d_file}" do
-        expect(chef_run).to create_cookbook_file("#{user_home}/.profile.d/#{profile_d_file}").with(
+    %w(bash_colors.sh bash_completion.sh bash_prompt.sh bash-git-prompt.sh chefdk.sh).each do |file|
+      it "creates ~/.profile.d/#{file}" do
+        expect(chef_run).to create_cookbook_file("#{user_home}/.profile.d/#{file}").with(
           owner: 'craig',
           group: 'staff',
           mode: '0700'
@@ -44,16 +48,12 @@ RSpec.describe 'workstation::bash' do
       end
     end
 
-    %w(git.sh).each do |profile_d_template|
-      it "creates ~/.profile.d/#{profile_d_template}" do
-        expect(chef_run).to expand_template("#{user_home}/.profile.d/#{profile_d_template}").with(
+    %w(git.sh).each do |template|
+      it "creates ~/.profile.d/#{template}" do
+        expect(chef_run).to expand_template("#{user_home}/.profile.d/#{template}").with(
           variables: { git_token => 'github_token_string' }
         )
       end
-    end
-
-    it 'converges successfully' do
-      expect { chef_run }.to_not raise_error
     end
   end
 end
