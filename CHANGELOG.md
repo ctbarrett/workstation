@@ -3,6 +3,7 @@
 ## 0.3.0
 
 -   Add homebrew taps, packages, and casks
+-   Documentation updates
 
 ## 0.2.0
 

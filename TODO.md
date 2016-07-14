@@ -21,11 +21,6 @@ alias gs='git status'
 
 # Homebrew github token
 export HOMEBREW_GITHUB_API_TOKEN='...'
-
-if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-  GIT_PROMPT_THEME=Default
-  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-fi
 ```
 
 ### ~/.gitconfig
@@ -71,14 +66,3 @@ $ sudo grep admin /etc/sudoers
     -   seti-ui
     -   seti-syntax
     -   vim-mode
-
-## Vagrant box
-
-To enable future automation and testing, the [osx-vm-templates](https://github.com/timsutton/osx-vm-templates) project
-was used, as outlined in [this article](https://spin.atomicobject.com/2015/11/17/vagrant-osx/).
-
-## Chef client
-
-Chef-DK was installed via [chefdk-bootstrap](https://github.com/Nordstrom/chefdk_bootstrap) to provide the required
-chef-client installation. To simplify things for now, I'll use chef-zero, but ultimately may decide to switch to some
-form of Chef Server.
