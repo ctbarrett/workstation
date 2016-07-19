@@ -18,6 +18,20 @@ end
   grep
   packer
   python3
+  bash-completion
+  apm-bash-completion
+  bash-completion
+  brew-cask-completion
+  docker-completion
+  docker-compose-completion
+  docker-machine-completion
+  gem-completion
+  kitchen-completion
+  packer-completion
+  pip-completion
+  rake-completion
+  ruby-completion
+  vagrant-completion
 ).each do |pkg|
   describe package(pkg.to_s) do
     it { should be_installed }
