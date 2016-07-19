@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.4.0
+
+-   Add git configuration
+
 ## 0.3.0
 
 -   Add homebrew taps, packages, and casks
