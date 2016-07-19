@@ -49,10 +49,13 @@ RSpec.describe 'workstation::bash' do
     end
 
     %w(git.sh).each do |template|
-      it "creates ~/.profile.d/#{template}" do
-        expect(chef_run).to expand_template("#{user_home}/.profile.d/#{template}").with(
-          variables: { git_token => 'github_token_string' }
-        )
+      fit "creates ~/.profile.d/#{template}" do
+        path = "#{user_home}/.profile.d/#{template}"
+        expect(chef_run).to render_file(path.to_s).with_content { |content|
+          expect(content).to include('# Aliases')
+          expect(content).to include('# Homebrew github token')
+          expect(content).to include('# Setup git-prompt')
+        }
       end
     end
   end

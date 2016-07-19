@@ -74,7 +74,7 @@ describe file("#{profile_d}/bash-git-prompt.sh") do
   its('mode') { should eq 0o0700 }
   its('content') { should match(/^## Use Git prompt if available/) }
   its('content') do
-    should match(%r{^\s+source "\$\(brew --prefix bash-git-prompt\)/share/gitprompt.sh"})
+    should match(%r{^\s+git_prompt_file="\$\(brew --prefix bash-git-prompt\)/share/gitprompt.sh"})
   end
 end
 
@@ -85,4 +85,15 @@ describe file("#{profile_d}/chefdk.sh") do
   it { should be_grouped_into('staff') }
   its('mode') { should eq 0o0700 }
   its('content') { should match(/^eval "\$\(chef shell-init bash\)"/) }
+end
+
+describe file("#{profile_d}/git.sh") do
+  it { should exist }
+  it { should be_file }
+  it { should be_owned_by('vagrant') }
+  it { should be_grouped_into('staff') }
+  its('mode') { should eq 0o0700 }
+  its('content') { should match(/^# Aliases/) }
+  its('content') { should match(/^# Homebrew github token/) }
+  its('content') { should match(/^# Setup git-prompt/) }
 end

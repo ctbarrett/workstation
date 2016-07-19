@@ -12,3 +12,7 @@ default['workstation']['shell']['bash']['profile_d_files'] = [
   'bash-git-prompt.sh',
   'chefdk.sh'
 ]
+
+default['workstation']['shell']['bash']['profile_d_templates'] = [
+  'git.sh'
+]

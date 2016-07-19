@@ -14,8 +14,7 @@ verifier:
 platforms:
   - name: osx-10.11
     driver_config:
-      box: osx-10.11
-      box_url: file:///Users/craig/src/osx-vm-templates/packer/osx-10.11.box
+      box: 'jhcook/osx-elcapitan-10.11'
 
 suites:
   - name: default

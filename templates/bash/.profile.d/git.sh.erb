@@ -8,9 +8,11 @@ alias go='git checkout'
 alias gs='git status'
 
 # Homebrew github token
-export HOMEBREW_GITHUB_API_TOKEN='64c38415c0a211355df3e701074bea0a9d4242f1'
+export HOMEBREW_GITHUB_API_TOKEN=''
 
-if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+# Setup git-prompt
+git_prompt_file="$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+if [[ -f ${git_prompt_file} ]]; then
   GIT_PROMPT_THEME=Default
-  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+  source ${git_prompt_file}
 fi
