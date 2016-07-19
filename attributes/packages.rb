@@ -12,7 +12,21 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'coreutils',
   'grep',
   'packer',
-  'python3'
+  'python3',
+  'bash-completion',
+  'apm-bash-completion',
+  'bash-completion',
+  'brew-cask-completion',
+  'docker-completion',
+  'docker-compose-completion',
+  'docker-machine-completion',
+  'gem-completion',
+  'kitchen-completion',
+  'packer-completion',
+  'pip-completion',
+  'rake-completion',
+  'ruby-completion',
+  'vagrant-completion'
 ]
 
 default['workstation']['packages']['homebrew']['casks'] = [

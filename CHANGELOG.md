@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.5.0
+
+-   Add bash completion
+
 ## 0.4.0
 
 -   Add git configuration

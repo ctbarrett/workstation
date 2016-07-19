@@ -38,6 +38,20 @@ RSpec.describe 'workstation::packages' do
       grep
       packer
       python3
+      bash-completion
+      apm-bash-completion
+      bash-completion
+      brew-cask-completion
+      docker-completion
+      docker-compose-completion
+      docker-machine-completion
+      gem-completion
+      kitchen-completion
+      packer-completion
+      pip-completion
+      rake-completion
+      ruby-completion
+      vagrant-completion
     ).each do |pkg|
       it "installs homebrew package #{pkg}" do
         expect(chef_run).to install_homebrew_package(pkg.to_s)

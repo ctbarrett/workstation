@@ -17,7 +17,7 @@ RSpec.describe 'workstation::bash' do
 
     user_home = '/Users/craig'
 
-    # TODO: Add mocks with test values for Etc methods
+    # TODO: Add mocks with test values for user data
     # TODO: Add mock value for github token / (future) data bag items
 
     it 'creates ~/.profile.d' do
@@ -49,13 +49,8 @@ RSpec.describe 'workstation::bash' do
     end
 
     %w(git.sh).each do |template|
-      fit "creates ~/.profile.d/#{template}" do
-        path = "#{user_home}/.profile.d/#{template}"
-        expect(chef_run).to render_file(path.to_s).with_content { |content|
-          expect(content).to include('# Aliases')
-          expect(content).to include('# Homebrew github token')
-          expect(content).to include('# Setup git-prompt')
-        }
+      it "creates ~/.profile.d/#{template}" do
+        expect(chef_run).to render_file("#{user_home}/.profile.d/#{template}")
       end
     end
   end
