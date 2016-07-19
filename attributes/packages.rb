@@ -7,6 +7,7 @@ default['workstation']['packages']['homebrew']['taps'] = [
 ]
 
 default['workstation']['packages']['homebrew']['pkgs'] = [
+  'ansible',
   'awscli',
   'bash-git-prompt',
   'coreutils',

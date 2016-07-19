@@ -32,6 +32,7 @@ RSpec.describe 'workstation::packages' do
 
     # Homebrew packages
     %w(
+      ansible
       awscli
       bash-git-prompt
       coreutils
