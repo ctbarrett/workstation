@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.6.0
+
+-   Add ansible
+
 ## 0.5.0
 
 -   Add bash completion

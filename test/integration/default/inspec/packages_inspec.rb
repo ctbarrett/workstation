@@ -12,6 +12,7 @@ end
 
 # Homebrew packages
 %w(
+  ansible
   awscli
   bash-git-prompt
   coreutils
