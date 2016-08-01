@@ -13,23 +13,23 @@ end
 # Homebrew packages
 %w(
   ansible
-  awscli
-  bash-git-prompt
-  coreutils
-  grep
-  packer
-  python3
-  bash-completion
   apm-bash-completion
+  awscli
   bash-completion
+  bash-git-prompt
   brew-cask-completion
+  coreutils
   docker-completion
   docker-compose-completion
   docker-machine-completion
   gem-completion
+  grep
   kitchen-completion
+  mas
+  packer
   packer-completion
   pip-completion
+  python3
   rake-completion
   ruby-completion
   vagrant-completion
