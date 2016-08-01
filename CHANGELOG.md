@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.6.1
+
+-   Updated bash configs
+
 ## 0.6.0
 
 -   Add ansible

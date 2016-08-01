@@ -3,16 +3,34 @@ alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
-alias gh='log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gh='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias go='git checkout'
 alias gs='git status'
 
 # Homebrew github token
 export HOMEBREW_GITHUB_API_TOKEN=''
 
-# Setup git-prompt
+##
+## Use Git prompt if available
+##
+
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_THEME=Custom
+
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+
+# GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
+# GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
+
+# GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+
+# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+
+# GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
+# GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
+# GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+
 git_prompt_file="$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
-if [[ -f ${git_prompt_file} ]]; then
-  GIT_PROMPT_THEME=Default
-  source ${git_prompt_file}
-fi
+[[ -f ${git_prompt_file} ]] && source ${git_prompt_file}

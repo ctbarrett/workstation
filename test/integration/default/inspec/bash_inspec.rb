@@ -31,6 +31,16 @@ describe file("#{home}/.bashrc") do
   its('content') { should match(/^# Terminal colors/) }
 end
 
+describe file("#{home}/.git-prompt-colors.sh") do
+  it { should exist }
+  it { should be_file }
+  it { should be_owned_by('vagrant') }
+  it { should be_grouped_into('staff') }
+  its('mode') { should eq 0o0600 }
+  its('content') { should match(/^# Custom version of the default theme for gitprompt.sh/) }
+  its('content') { should match(/^# call only from theme file/) }
+end
+
 describe file("#{profile_d}/bash_colors.sh") do
   it { should exist }
   it { should be_file }

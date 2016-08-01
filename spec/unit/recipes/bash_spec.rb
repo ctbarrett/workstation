@@ -28,7 +28,7 @@ RSpec.describe 'workstation::bash' do
       )
     end
 
-    %w(.bash_profile .bashrc).each do |dot_file|
+    %w(.bash_profile .bashrc .git-prompt-colors.sh).each do |dot_file|
       it "creates ~/#{dot_file}" do
         expect(chef_run).to create_cookbook_file("#{user_home}/#{dot_file}").with(
           owner: 'craig',
@@ -38,7 +38,7 @@ RSpec.describe 'workstation::bash' do
       end
     end
 
-    %w(bash_colors.sh bash_completion.sh bash_prompt.sh bash-git-prompt.sh chefdk.sh).each do |file|
+    %w(bash_colors.sh bash_completion.sh bash_prompt.sh chefdk.sh).each do |file|
       it "creates ~/.profile.d/#{file}" do
         expect(chef_run).to create_cookbook_file("#{user_home}/.profile.d/#{file}").with(
           owner: 'craig',
