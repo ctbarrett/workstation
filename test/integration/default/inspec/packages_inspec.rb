@@ -24,6 +24,7 @@ end
   docker-machine-completion
   gem-completion
   grep
+  lastpass-cli
   kitchen-completion
   mas
   packer
@@ -53,6 +54,7 @@ end
   istat-menus
   iterm2
   keepassx
+  lastpass
   microsoft-office
   nosleep
   skype
@@ -61,6 +63,7 @@ end
   vagrant
   virtualbox
   virtualbox-extension-pack
+  zoomus
 ).each do |cask|
   describe bash("brew cask info #{cask}") do
     its('exit_status') { should eq 0 }

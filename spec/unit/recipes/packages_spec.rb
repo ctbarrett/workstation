@@ -45,6 +45,7 @@ RSpec.describe 'workstation::packages' do
       gem-completion
       grep
       kitchen-completion
+      lastpass-cli
       mas
       packer
       packer-completion
@@ -73,6 +74,7 @@ RSpec.describe 'workstation::packages' do
       istat-menus
       iterm2
       keepassx
+      lastpass
       microsoft-office
       nosleep
       skype
@@ -81,6 +83,7 @@ RSpec.describe 'workstation::packages' do
       vagrant
       virtualbox
       virtualbox-extension-pack
+      zoomus
     ).each do |cask|
       it "installs homebrew cask #{cask}" do
         expect(chef_run).to install_homebrew_cask(cask.to_s)

@@ -19,6 +19,7 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'docker-machine-completion',
   'gem-completion',
   'grep',
+  'lastpass-cli',
   'kitchen-completion',
   'mas',
   'packer',
@@ -43,6 +44,7 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'istat-menus',
   'iterm2',
   'keepassx',
+  'lastpass',
   'microsoft-office',
   'nosleep',
   'skype',
@@ -50,5 +52,6 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'spectacle',
   'vagrant',
   'virtualbox',
-  'virtualbox-extension-pack'
+  'virtualbox-extension-pack',
+  'zoomus'
 ]
