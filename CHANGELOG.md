@@ -1,5 +1,17 @@
 # workstation change history
 
+## 0.6.4
+
+-   Add yakyak
+
+## 0.6.3
+
+-   Add lastpass, lastpass-cli, and zoom.us client
+
+## 0.6.2
+
+-   Add mas
+
 ## 0.6.1
 
 -   Updated bash configs

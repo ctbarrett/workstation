@@ -7,6 +7,7 @@ default['workstation']['packages']['homebrew']['taps'] = [
 ]
 
 default['workstation']['packages']['homebrew']['pkgs'] = [
+  'amazon-ecs-cli',
   'ansible',
   'apm-bash-completion',
   'awscli',
@@ -32,6 +33,8 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
 ]
 
 default['workstation']['packages']['homebrew']['casks'] = [
+  'amazon-workdocs',
+  'amazon-workspaces',
   'atom',
   'box-sync',
   'caffeine',
@@ -53,5 +56,6 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'vagrant',
   'virtualbox',
   'virtualbox-extension-pack',
+  'yakyak',
   'zoomus'
 ]
