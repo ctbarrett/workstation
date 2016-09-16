@@ -32,6 +32,7 @@ RSpec.describe 'workstation::packages' do
 
     # Homebrew packages
     %w(
+      amazon-ecs-cli
       ansible
       apm-bash-completion
       awscli
@@ -62,6 +63,8 @@ RSpec.describe 'workstation::packages' do
 
     # Homebrew casks
     %w(
+      amazon-workdocs
+      amazon-workspaces
       atom
       box-sync
       caffeine
@@ -83,6 +86,7 @@ RSpec.describe 'workstation::packages' do
       vagrant
       virtualbox
       virtualbox-extension-pack
+      yakyak
       zoomus
     ).each do |cask|
       it "installs homebrew cask #{cask}" do

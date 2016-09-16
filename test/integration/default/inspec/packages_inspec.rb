@@ -63,6 +63,7 @@ end
   vagrant
   virtualbox
   virtualbox-extension-pack
+  yakyak
   zoomus
 ).each do |cask|
   describe bash("brew cask info #{cask}") do
