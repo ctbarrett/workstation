@@ -1,6 +1,4 @@
-##
-## Default/basic/color prompt
-##
+#!/bin/bash
 
 if [[ -f ~/.profile.d/bash_colors.sh ]]
 then
@@ -31,12 +29,11 @@ set_cl_prompt () {
   # Print the current user in red, a cyan @ separator and (short) hostname in green
   PS1+="\\[$Red\\]\\u\\[$Cyan\\]@\\[$Green\\]\\h"
 
-  # Print the working directory in yellow, and prompt marker in cyan,
-  # then reset the text color to the default.
-  PS1+="\\[$Cyan\\]:\\[$Yellow\\]\\W\\[$Cyan\\] $\\[$Reset\\] "
+  # Print the working directory in yellow, git branch (if available) in Blue,
+  # and prompt marker in cyan, then reset the text color to the default.
+  PS1+="\\[$Cyan\\]:\\[$Yellow\\]\\W\\[$Blue\\]$git_prompt\\[$Cyan\\] $\\[$Reset\\] "
 }
 
-# Set color or basic default prompt
 if [[ $cldef == "true" ]]
 then
   PROMPT_COMMAND='history -a; history -n; set_cl_prompt'
@@ -44,4 +41,9 @@ then
 else
   PROMPT_COMMAND="history -a; history -n"
   export PS1="\u@\h:\w \$ "
+fi
+
+if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+  GIT_PROMPT_THEME=Default
+  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
