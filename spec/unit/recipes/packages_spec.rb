@@ -42,18 +42,21 @@ RSpec.describe 'workstation::packages' do
       coreutils
       docker-completion
       docker-compose-completion
-      docker-machine-completion
       gem-completion
       grep
       kitchen-completion
       lastpass-cli
+      launchctl-completion
       mas
+      open-completion
       packer
       packer-completion
       pip-completion
+      python
       python3
       rake-completion
       ruby-completion
+      todo-txt
       vagrant-completion
     ).each do |pkg|
       it "installs homebrew package #{pkg}" do
@@ -68,25 +71,30 @@ RSpec.describe 'workstation::packages' do
       atom
       box-sync
       caffeine
-      chefdk
       daisydisk
+      docker
       flash
       flux
+      gimp
       google-chrome
       google-drive
+      hermes
       istat-menus
       iterm2
       keepassx
+      kitematic
       lastpass
       microsoft-office
       nosleep
+      rescuetime
       skype
       slack
       spectacle
+      todotxt
+      utorrent
       vagrant
       virtualbox
       virtualbox-extension-pack
-      yakyak
       zoomus
     ).each do |cask|
       it "installs homebrew cask #{cask}" do
