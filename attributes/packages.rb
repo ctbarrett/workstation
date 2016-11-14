@@ -13,6 +13,7 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'bash-completion',
   'bash-git-prompt',
   'brew-cask-completion',
+  'bundler-completion',
   'coreutils',
   'docker-completion',
   'docker-compose-completion',
@@ -20,17 +21,20 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'grep',
   'launchctl-completion',
   'kitchen-completion',
+  'macvim',
   'mas',
   'open-completion',
   'packer',
   'packer-completion',
+  'pandoc',
   'pip-completion',
   'python',
   'python3',
   'rake-completion',
   'ruby-completion',
   'todo-txt',
-  'vagrant-completion'
+  'vagrant-completion',
+  'vim'
 ]
 
 default['workstation']['packages']['homebrew']['casks'] = [
@@ -48,12 +52,15 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'google-chrome',
   'google-drive',
   'hermes',
+  'inkscape',
   'istat-menus',
   'iterm2',
+  'kindle',
   'kitematic',
   'microsoft-office',
   'nosleep',
-  'rescuetime',
+  'postman',
+  'scribus',
   'skype',
   'slack',
   'spectacle',
@@ -61,5 +68,7 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'utorrent',
   'vagrant',
   'virtualbox',
-  'virtualbox-extension-pack'
+  'virtualbox-extension-pack',
+  'xquartz',
+  'yakyak'
 ]
