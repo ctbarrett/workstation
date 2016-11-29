@@ -12,7 +12,6 @@ end
 
 # Homebrew packages
 %w(
-  ansible
   apm-bash-completion
   awscli
   bash-completion
@@ -24,7 +23,6 @@ end
   docker-machine-completion
   gem-completion
   grep
-  lastpass-cli
   kitchen-completion
   mas
   packer
@@ -53,8 +51,6 @@ end
   google-drive
   istat-menus
   iterm2
-  keepassx
-  lastpass
   microsoft-office
   nosleep
   skype

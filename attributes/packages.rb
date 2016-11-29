@@ -19,6 +19,7 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'docker-compose-completion',
   'gem-completion',
   'grep',
+  'hub',
   'launchctl-completion',
   'kitchen-completion',
   'macvim',
@@ -31,7 +32,14 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'python',
   'python3',
   'rake-completion',
+  'rbenv',
+  'rbenv-binstubs',
+  'rbenv-bundle-exec',
+  'rbenv-bundler',
+  'rbenv-use',
   'ruby-completion',
+  'ruby-build',
+  'terraform',
   'todo-txt',
   'vagrant-completion',
   'vim'
@@ -70,5 +78,6 @@ default['workstation']['packages']['homebrew']['casks'] = [
   'virtualbox',
   'virtualbox-extension-pack',
   'xquartz',
-  'yakyak'
+  'yakyak',
+  'zoomus'
 ]
