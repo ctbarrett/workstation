@@ -33,7 +33,6 @@ RSpec.describe 'workstation::packages' do
     # Homebrew packages
     %w(
       amazon-ecs-cli
-      ansible
       apm-bash-completion
       awscli
       bash-completion
@@ -45,7 +44,6 @@ RSpec.describe 'workstation::packages' do
       gem-completion
       grep
       kitchen-completion
-      lastpass-cli
       launchctl-completion
       mas
       open-completion
@@ -66,14 +64,11 @@ RSpec.describe 'workstation::packages' do
 
     # Homebrew casks
     %w(
-      amazon-workdocs
-      amazon-workspaces
       atom
       box-sync
       caffeine
       daisydisk
       docker
-      flash
       flux
       gimp
       google-chrome
@@ -81,12 +76,9 @@ RSpec.describe 'workstation::packages' do
       hermes
       istat-menus
       iterm2
-      keepassx
       kitematic
-      lastpass
       microsoft-office
       nosleep
-      rescuetime
       skype
       slack
       spectacle

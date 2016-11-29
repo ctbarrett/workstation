@@ -1,5 +1,9 @@
 # workstation change history
 
+## 0.6.9
+
+-   Package updates
+
 ## 0.6.8
 
 -   Package updates
