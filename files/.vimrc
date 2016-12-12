@@ -96,24 +96,42 @@
 
 " }
 
+" Plugins {
+    call plug#begin()
+
+        " NERDtree {
+            " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+            Plug 'scrooloose/nerdtree'
+            if isdirectory(expand(s:editor_root . "/plugged/nerdtree"))
+                map <C-e> :NERDTreeToggle<CR>
+                map <leader>e :NERDTreeToggle<CR>
+                nmap <leader>nt :NERDTreeFind<CR>
+
+                let NERDTreeShowBookmarks=1
+                let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+                let NERDTreeChDirMode=0
+                let NERDTreeQuitOnOpen=1
+                let NERDTreeMouseMode=2
+                let NERDTreeShowHidden=1
+                let NERDTreeKeepTreeInNewTab=1
+                let g:nerdtree_tabs_open_on_gui_startup=0
+            endif
+        " }
+
+        " vim-colorschemes {
+            Plug 'flazz/vim-colorschemes'
+        " }
+
+    call plug#end()
+" }
+
 " UI & appearance {
 
     " Themes & colors {
-        colorscheme badwolf           " Load a colorscheme
+        colorscheme lucius              " Load a colorscheme
         set background=dark             " Assume a dark background
         syntax on                       " Syntax highlighting
 
-        " Allow to trigger background
-        function! ToggleBG()
-            let s:tbg = &background
-            " Inversion
-            if s:tbg == "dark"
-                set background=light
-            else
-                set background=dark
-            endif
-        endfunction
-        noremap <leader>bg :call ToggleBG()<CR>
     " }
 
     " Turn on line numbering
@@ -175,6 +193,9 @@
     endif
     cmap Tabe tabe
 
+    " Toggle light/dark background
+    noremap <leader>bg :call ToggleBG()<CR>
+
     " Normal mode {
 
         " Easier moving in tabs and windows
@@ -221,35 +242,6 @@
 
     " }
 
-" }
-
-" Plugins {
-    call plug#begin()
-
-        " NERDtree {
-            " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-            Plug 'scrooloose/nerdtree'
-            if isdirectory(expand(s:editor_root . "/plugged/nerdtree"))
-                map <C-e> :NERDTreeToggle<CR>
-                map <leader>e :NERDTreeToggle<CR>
-                nmap <leader>nt :NERDTreeFind<CR>
-
-                let NERDTreeShowBookmarks=1
-                let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-                let NERDTreeChDirMode=0
-                let NERDTreeQuitOnOpen=1
-                let NERDTreeMouseMode=2
-                let NERDTreeShowHidden=1
-                let NERDTreeKeepTreeInNewTab=1
-                let g:nerdtree_tabs_open_on_gui_startup=0
-            endif
-        " }
-
-        " vim-colorschemes {
-            Plug 'flazz/vim-colorschemes'
-        " }
-
-    call plug#end()
 " }
 
 " Functions {
@@ -299,6 +291,17 @@
         call cursor(l, c)
     endfunction
     " }
+
+    " Allow to trigger background
+    function! ToggleBG()
+        let s:tbg = &background
+        " Inversion
+        if s:tbg == "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+    endfunction
 
     " Initialize NERDTree as needed {
     function! NERDTreeInitAsNeeded()

@@ -5,6 +5,10 @@ obsolete, the overall workflow will be sufficiently mature that it is relatively
 
 ## Files/Directories
 
+### ~/.vimrc
+
+Add chef code to setup .vimrc (vim cookbook?)
+
 ### ~/.profile.d
 
 #### git.sh
