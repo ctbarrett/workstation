@@ -40,6 +40,7 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'ruby-completion',
   'ruby-build',
   'terraform',
+  'tmate',
   'todo-txt',
   'vagrant-completion',
   'vim'
