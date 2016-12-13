@@ -102,6 +102,33 @@
 " Plugins {
   call plug#begin(s:editor_root . '/plugged')
 
+    " vim-airline {
+      Plug 'vim-airline/vim-airline'
+      Plug 'vim-airline/vim-airline-themes'
+      Plug 'powerline/fonts'
+
+      " Set configuration options for the statusline plugin vim-airline.
+      " Use the powerline theme and optionally enable powerline symbols.
+      " To use the symbols , , , , , , and .in the statusline
+      " segments add the following to your .vimrc.before.local file:
+      " let g:airline_powerline_fonts=1
+      " If the previous symbols do not render for you then install a
+      " powerline enabled font.
+
+      " See `:echo g:airline_theme_map` for some more choices
+      " Default in terminal vim is 'dark'
+      if isdirectory(expand(s:editor_root . "plugged/vim-airline-themes/"))
+          if !exists('g:airline_theme')
+              let g:airline_theme = 'dark'
+          endif
+          if !exists('g:airline_powerline_fonts')
+              " Use the default set of separators with a few customizations
+              let g:airline_left_sep='›'  " Slightly fancier than '>'
+              let g:airline_right_sep='‹' " Slightly fancier than '<'
+          endif
+      endif
+    " }
+
     " NERDtree {
       " NERD tree will be loaded on the first invocation of NERDTreeToggle command
       Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " Loads only when opening NERDTree
@@ -123,33 +150,6 @@
 
     " vim-colorschemes {
       Plug 'flazz/vim-colorschemes'
-    " }
-
-    " vim-airline {
-      Plug 'vim-airline/vim-airline'
-      Plug 'vim-airline/vim-airline-themes'
-      Plug 'powerline/fonts'
-
-      " Set configuration options for the statusline plugin vim-airline.
-      " Use the powerline theme and optionally enable powerline symbols.
-      " To use the symbols , , , , , , and .in the statusline
-      " segments add the following to your .vimrc.before.local file:
-      let g:airline_powerline_fonts=1
-      " If the previous symbols do not render for you then install a
-      " powerline enabled font.
-
-      " See `:echo g:airline_theme_map` for some more choices
-      " Default in terminal vim is 'dark'
-      if isdirectory(expand(s:editor_root . "plugged/vim-airline-themes/"))
-          if !exists('g:airline_theme')
-              let g:airline_theme = 'solarized'
-          endif
-          if !exists('g:airline_powerline_fonts')
-              " Use the default set of separators with a few customizations
-              let g:airline_left_sep='›'  " Slightly fancier than '>'
-              let g:airline_right_sep='‹' " Slightly fancier than '<'
-          endif
-      endif
     " }
 
     " vim-gitgutter {
