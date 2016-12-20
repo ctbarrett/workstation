@@ -7,6 +7,7 @@ default['workstation']['packages']['homebrew']['taps'] = [
 ]
 
 default['workstation']['packages']['homebrew']['pkgs'] = [
+  'ack',
   'amazon-ecs-cli',
   'apm-bash-completion',
   'awscli',
@@ -15,15 +16,18 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'brew-cask-completion',
   'bundler-completion',
   'coreutils',
+  'ctags',
   'docker-completion',
   'docker-compose-completion',
   'gem-completion',
   'grep',
   'hub',
+  'jsonlint',
   'launchctl-completion',
   'kitchen-completion',
   'macvim',
   'mas',
+  'npm',
   'open-completion',
   'packer',
   'packer-completion',
@@ -39,11 +43,13 @@ default['workstation']['packages']['homebrew']['pkgs'] = [
   'rbenv-use',
   'ruby-completion',
   'ruby-build',
+  'the_silver_searcher',
   'terraform',
   'tmate',
   'todo-txt',
   'vagrant-completion',
-  'vim'
+  'vim',
+  'watch'
 ]
 
 default['workstation']['packages']['homebrew']['casks'] = [
