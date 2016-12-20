@@ -39,7 +39,6 @@
         let s:terminfo_patch = s:editor_root . '/patch-terminfo-for-vim-tmux-navigator.sh'
         " auto-patch terminfo so that ctrl-h works in neovim
         silent execute '!sh ' .  s:terminfo_patch
-
     endif
 
 " }
@@ -71,6 +70,7 @@
     set iskeyword-=-                    " '-' is an end of word designator
 
     " Setting up the directories {
+        call InitializeDirectories()
         set backup                      " Backups are nice ...
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
@@ -83,7 +83,7 @@
     set mouse=a                         " Automatically enable mouse usage
     set mousehide                       " Hide the mouse cursor while typing
 
-    " Enable per-file overrides
+    " Enable per-file overrides of tab spacing
     set modeline
 
     set backspace=indent,eol,start      " Backspace for dummies
@@ -97,7 +97,16 @@
 " }
 
 " Plugins {
-    call plug#begin()
+    call plug#begin(expand(s:editor_root . "/plugged"))
+
+        " vim-airline {
+            Plug 'vim-airline/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+        " }
+
+        " vim-colorschemes {
+            Plug 'flazz/vim-colorschemes'
+        " }
 
         " NERDtree {
             " NERD tree will be loaded on the first invocation of NERDTreeToggle command
@@ -110,7 +119,7 @@
                 let NERDTreeShowBookmarks=1
                 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
                 let NERDTreeChDirMode=0
-                let NERDTreeQuitOnOpen=1
+                let NERDTreeQuitOnOpen=0
                 let NERDTreeMouseMode=2
                 let NERDTreeShowHidden=1
                 let NERDTreeKeepTreeInNewTab=1
@@ -118,8 +127,16 @@
             endif
         " }
 
-        " vim-colorschemes {
-            Plug 'flazz/vim-colorschemes'
+        " vim-signify {
+            Plug 'mhinz/vim-signify'
+        " }
+
+        " vim-surround {
+            Plug 'tpope/vim-surround'
+        " }
+
+        " vim-tmux-navigator {
+            Plug 'christoomey/vim-tmux-navigator'
         " }
 
     call plug#end()
@@ -128,6 +145,7 @@
 " UI & appearance {
 
     " Themes & colors {
+        set t_Co=256                    " Set terminal colors
         colorscheme lucius              " Load a colorscheme
         set background=dark             " Assume a dark background
         syntax on                       " Syntax highlighting
@@ -175,6 +193,9 @@
     " Set leader to ',' instead of '\'
     let mapleader = ','
 
+    " Toggle line numbers and signs column (<leader>l)
+    nmap <silent> <leader>l :set invnumber invrelativenumber<CR>:SignifyToggle<CR>
+
     " Easier horizontal scrolling
     map zl zL
     map zh zH
@@ -196,51 +217,44 @@
     " Toggle light/dark background
     noremap <leader>bg :call ToggleBG()<CR>
 
-    " Normal mode {
+    " Easier moving in tabs and windows
+    " Disabled in favor of the same binds from christoomey/vim-tmux-navigator
+    " nmap <C-J> <C-W>j
+    " nmap <C-K> <C-W>k
+    " nmap <C-L> <C-W>l
+    " nmap <C-H> <C-W>h
 
-        " Easier moving in tabs and windows
-        nmap <C-J> <C-W>j<C-W>_
-        nmap <C-K> <C-W>k<C-W>_
-        nmap <C-L> <C-W>l<C-W>_
-        nmap <C-H> <C-W>h<C-W>_
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    noremap j gj
+    noremap k gk
 
-        " Wrapped lines goes down/up to next row, rather than next line in file.
-        noremap j gj
-        noremap k gk
+    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
 
-        " Yank from the cursor to the end of the line, to be consistent with C and D.
-        nnoremap Y y$
+    " TMUX Cursor location on ⌘ -/ (cmd-/)
+    let &t_ti.="\<Esc>]1337;HighlightCursorLine=true\x7"
+    let &t_te.="\<Esc>]1337;HighlightCursorLine=false\x7"
 
-        " Toggle search highlighting rather than clear the current
-        " search results.
-        nmap <silent> <leader>/ :set invhlsearch<CR>
+    " Toggle search highlighting rather than clear the current
+    " search results.
+    nmap <silent> <leader>/ :set invhlsearch<CR>
 
-        " Map <Leader>ff to display all lines with keyword under cursor
-        " and ask which one to jump to
-        nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+    " Map <Leader>ff to display all lines with keyword under cursor
+    " and ask which one to jump to
+    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
-    " }
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
 
-    " Visual mode {
+    " Allow using the repeat operator with a visual selection (!)
+    " http://stackoverflow.com/a/8064607/127816
+    vnoremap . :normal .<CR>
 
-        " Visual shifting (does not exit Visual mode)
-        vnoremap < <gv
-        vnoremap > >gv
-
-        " Allow using the repeat operator with a visual selection (!)
-        " http://stackoverflow.com/a/8064607/127816
-        vnoremap . :normal .<CR>
-
-    " }
-
-    " Command mode {
-
-        " Shortcuts
-        " Change Working Directory to that of the current file
-        cmap cwd lcd %:p:h
-        cmap cd. lcd %:p:h
-
-    " }
+    " Shortcuts
+    " Change Working Directory to that of the current file
+    cmap cwd lcd %:p:h
+    cmap cd. lcd %:p:h
 
 " }
 
@@ -275,7 +289,6 @@
             endif
         endfor
     endfunction
-    call InitializeDirectories()
     " }
 
     " Strip whitespace {
@@ -302,20 +315,6 @@
             set background=dark
         endif
     endfunction
-
-    " Initialize NERDTree as needed {
-    function! NERDTreeInitAsNeeded()
-        redir => bufoutput
-        buffers!
-        redir END
-        let idx = stridx(bufoutput, "NERD_tree")
-        if idx > -1
-            NERDTreeMirror
-            NERDTreeFind
-            wincmd l
-        endif
-    endfunction
-    " }
 
 " }
 
