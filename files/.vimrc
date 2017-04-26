@@ -60,7 +60,6 @@
 
   " Automatically switch to the current file directory when a new buffer is opened
   autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-
 " }
 
 " Vim UI {
@@ -246,7 +245,6 @@
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
   " }
-
 " }
 
 " Functions {
@@ -281,6 +279,7 @@
     call cursor(l, c)
   endfunction
   " }
+
 " }
 
 " Initializations {
