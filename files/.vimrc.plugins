@@ -1,0 +1,191 @@
+" vim:set ft=vim sw=2 ts=2 sts=2 et tw=98 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+
+" Setup Plug Manager {
+  " Load vim-plug
+  if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  endif
+
+  " Specify a directory for plugins
+  call plug#begin('~/.vim/plugged')
+" }
+
+" Base {
+  Plug 'tpope/vim-sensible'
+" }
+
+" General {
+  Plug 'mileszs/ack.vim'              " Better search than grep
+  Plug 'terryma/vim-multiple-cursors' " Do magic multi-edits
+  Plug 'scrooloose/nerdtree'          " Project drawer / file explorer
+  Plug 'Xuyuanp/nerdtree-git-plugin'  " Fancy git status for nerdtree
+  Plug 'dhruvasagar/vim-vinegar'      " Fork of vinegar for nerdtree
+" }
+
+" UI & Themes {
+  " UI
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'powerline/fonts'
+  Plug 'Yggdroot/indentLine'
+  Plug 'mhinz/vim-signify'
+  Plug 'wesQ3/vim-windowswap'
+
+  " Themes
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'raphamorim/lucario'
+  Plug 'sirakij/macvim-light'
+  Plug 'tomasr/molokai'
+  Plug 'acoustichero/simple_dark'
+  Plug 'roosta/srcery'
+  Plug 'lifepillar/vim-solarized8'
+  Plug 'jacoborus/tender'
+  Plug 'zcodes/vim-colors-basic'
+  Plug 'agude/vim-eldar'
+
+  " Conque-Shell
+  Plug 'oplatek/Conque-Shell'
+
+" }
+
+" Writing {
+  Plug 'tpope/vim-markdown'
+  Plug 'reedes/vim-wordy'
+" }
+
+" Programming {
+  Plug 'tpope/vim-surround'
+  Plug 'scrooloose/syntastic'
+  Plug 'tpope/vim-fugitive'
+
+  " Ruby
+  Plug 'vim-scripts/ruby-matchit'
+
+  " HCL
+  Plug 'hashivim/vim-hashicorp-tools'
+
+  " Chef
+  Plug 'vadv/vim-chef'
+  Plug 'hron84/vim-librarian'
+" }
+
+" Initialize plugins {
+  call plug#end()
+" }
+
+""""     " Programming {
+""""             " Pick one of the checksyntax, jslint, or syntastic
+""""             Plug 'mattn/webapi-vim'
+""""             Plug 'mattn/gist-vim'
+""""             Plug 'scrooloose/nerdcommenter'
+""""             Plug 'tpope/vim-commentary'
+""""             Plug 'godlygeek/tabular'
+""""             Plug 'luochen1990/rainbow'
+""""             if executable('ctags')
+""""                 Plug 'majutsushi/tagbar'
+""""             endif
+""""     " }
+
+""""     " General {
+""""         if count(g:spf13_bundle_groups, 'general')
+""""             Plug 'altercation/vim-colors-solarized'
+""""             Plug 'spf13/vim-colors'
+""""             Plug 'tpope/vim-repeat'
+""""             Plug 'rhysd/conflict-marker.vim'
+""""             Plug 'jiangmiao/auto-pairs'
+""""             Plug 'ctrlpvim/ctrlp.vim'
+""""             Plug 'tacahiroy/ctrlp-funky'
+""""             Plug 'vim-scripts/sessionman.vim'
+""""             Plug 'matchit.zip'
+""""             Plug 'bling/vim-bufferline'
+""""             Plug 'easymotion/vim-easymotion'
+""""             Plug 'jistr/vim-nerdtree-tabs'
+""""             Plug 'flazz/vim-colorschemes'
+""""             Plug 'mbbill/undotree'
+""""             Plug 'nathanaelkane/vim-indent-guides'
+""""             if !exists('g:spf13_no_views')
+""""                 Plug 'vim-scripts/restore_view.vim'
+""""             endif
+""""             Plug 'tpope/vim-abolish.git'
+""""             Plug 'osyo-manga/vim-over'
+""""             Plug 'kana/vim-textobj-user'
+""""             Plug 'kana/vim-textobj-indent'
+""""             Plug 'gcmt/wildfire.vim'
+""""         endif
+""""     " }
+
+""""     " Snippets & AutoComplete {
+""""         if count(g:spf13_bundle_groups, 'snipmate')
+""""             Plug 'garbas/vim-snipmate'
+""""             Plug 'honza/vim-snippets'
+""""             " Source support_function.vim to support vim-snippets.
+""""             if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
+""""                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
+""""             endif
+""""         elseif count(g:spf13_bundle_groups, 'youcompleteme')
+""""             Plug 'Valloric/YouCompleteMe'
+""""             Plug 'SirVer/ultisnips'
+""""             Plug 'honza/vim-snippets'
+""""         elseif count(g:spf13_bundle_groups, 'neocomplcache')
+""""             Plug 'Shougo/neocomplcache'
+""""             Plug 'Shougo/neosnippet'
+""""             Plug 'Shougo/neosnippet-snippets'
+""""             Plug 'honza/vim-snippets'
+""""         elseif count(g:spf13_bundle_groups, 'neocomplete')
+""""             Plug 'Shougo/neocomplete.vim.git'
+""""             Plug 'Shougo/neosnippet'
+""""             Plug 'Shougo/neosnippet-snippets'
+""""             Plug 'honza/vim-snippets'
+""""         endif
+""""     " }
+
+""""     " Python {
+""""         if count(g:spf13_bundle_groups, 'python')
+""""             " Pick either python-mode or pyflakes & pydoc
+""""             Plug 'klen/python-mode'
+""""             Plug 'yssource/python.vim'
+""""             Plug 'python_match.vim'
+""""             Plug 'pythoncomplete'
+""""         endif
+""""     " }
+
+""""     " Javascript {
+""""         if count(g:spf13_bundle_groups, 'javascript')
+""""             Plug 'elzr/vim-json'
+""""             Plug 'groenewege/vim-less'
+""""             Plug 'pangloss/vim-javascript'
+""""             Plug 'briancollins/vim-jst'
+""""             Plug 'kchmck/vim-coffee-script'
+""""         endif
+""""     " }
+
+""""     " HTML {
+""""         if count(g:spf13_bundle_groups, 'html')
+""""             Plug 'amirh/HTML-AutoCloseTag'
+""""             Plug 'hail2u/vim-css3-syntax'
+""""             Plug 'gorodinskiy/vim-coloresque'
+""""             Plug 'tpope/vim-haml'
+""""             Plug 'mattn/emmet-vim'
+""""         endif
+""""     " }
+
+""""     " Go Lang {
+""""         if count(g:spf13_bundle_groups, 'go')
+""""             "Plug 'Blackrush/vim-gocode'
+""""             Plug 'fatih/vim-go'
+""""         endif
+""""     " }
+
+""""     " Misc {
+""""         if count(g:spf13_bundle_groups, 'misc')
+""""             Plug 'rust-lang/rust.vim'
+""""             Plug 'spf13/vim-preview'
+""""             Plug 'tpope/vim-cucumber'
+""""             Plug 'cespare/vim-toml'
+""""             Plug 'quentindecock/vim-cucumber-align-pipes'
+""""             Plug 'saltstack/salt-vim'
+""""         endif
+""""     " }
+
+
